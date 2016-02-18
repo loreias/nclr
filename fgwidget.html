@@ -1,0 +1,129 @@
+<script type="text/javascript">
+	window.addEventListener("load", function load(event){
+	    window.removeEventListener("load", load, false); 
+	    fbBtnLoad.init();  
+	},false);
+
+	var fbBtnLoad = {
+		init: function() {
+			var currentHref  	= window.location.href,
+				pageTitle 	 	= document.getElementsByTagName('title'),
+				descriptionTag	= document.querySelectorAll("meta[name=description]")[0].getAttribute('content');
+
+			// set img url/fallback for fb widget,	
+			var featuredImageRoute = document.querySelectorAll(".featured-img-main");	
+
+			baseUrl 	= location.href.split( '/' );
+			protocol 	= baseUrl[0];
+			host 		= baseUrl[2];
+			nclrUrl		= protocol + '//' + host;
+
+			if ( featuredImageRoute.length !== 0 ){
+				fbImgUrlTag = nclrUrl +  featuredImageRoute[0].getAttribute('src');
+			}else{
+				//fallback
+				fbImgUrlTag = nclrUrl + "/Assets/uploads/images/orlando-skyline.jpg";
+			}
+
+
+
+			//document.write('<div  class="fb-share-button" data-href="' + currentHref  + '" data-layout="box_count"></div>');
+			document.getElementById('fbBtn-widget').value = currentHref;			
+		
+
+			// get meta tags data and setting up the Facebook data	
+			var metaTags=document.getElementsByTagName("meta");
+
+			var fbAppIdContent = "";
+			for (var i = 0; i < metaTags.length; i++) {
+				
+				switch( metaTags[i].getAttribute("property") ){
+
+					case "og:url" :
+						metaTags[i].setAttribute("content", currentHref);
+					break;
+
+
+					case "og:title" :
+						metaTags[i].setAttribute("content", pageTitle);
+					break;
+
+
+					case "og:description" :
+						metaTags[i].setAttribute("content", descriptionTag);
+					break;
+
+					case "og:image" :
+						metaTags[i].setAttribute("content", fbImgUrlTag);
+					break;										
+				}				
+			}
+		}
+	}
+</script>
+
+<div id="fbBtn-widget" class="fb-share-button" data-href="" data-layout="box_count"></div>
+
+
+*******************************************************************************
+
+
+
+
+
+			    if (metaTags[i].getAttribute("property") == "fb:app_id") {
+			        fbAppIdContent = metaTags[i].getAttribute("content");
+			        break;
+			    }
+
+
+
+<meta property="og:url" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="" />
+
+
+
+
+
+
+
+
+
+
+
+
+<head>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="/Rhythmyx/web_resources/themes/nclr-2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/Rhythmyx/web_resources/themes/nclr-2/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <link href="/Rhythmyx/web_resources/themes/nclr-2/css/nclr-styles.min.css" rel="stylesheet">
+
+    <!-- slich slider -->
+    <link rel="stylesheet" type="text/css" href="/Rhythmyx/web_resources/themes/nclr-2/js/vendor/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="/Rhythmyx/web_resources/themes/nclr-2/js/vendor/slick/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="/Rhythmyx/web_resources/themes/nclr-2/js/vendor/slippry/slippry.css"/>     
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	
+	<!-- Facebook Share this meta  -->
+	<meta property="og:url"                content="http://www.nytimes.com/2015/02/19/arts/international/when-great-minds-dont-think-alike.html" />
+	<meta property="og:type"               content="article" />
+	<meta property="og:title"              content="When Great Minds Don’t Think Alike" />
+	<meta property="og:description"        content="How much does culture influence creative thinking?" />
+	<meta property="og:image"              content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
+</head>
+<body id="page-top" class="index">

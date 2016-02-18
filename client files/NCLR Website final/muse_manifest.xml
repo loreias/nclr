@@ -1,0 +1,142 @@
+<manifest alg="2" build="11" opt="false" iceEnabled="true" iceMarkupVersion="2" exportTarget="other" resolutions="1x" timestamp="1433976132747">
+  <folder name="css">
+    <file name="site_global.css" crc="4272104639"/>
+    <file name="master_a-master.css" crc="4199674489" ref="our-work:immigration:publications:health:tools:regional-offices:issues:index:ams:events"/>
+    <file name="our-work.css" crc="184404654" ref="our-work"/>
+    <file name="iefonts_our-work.css" crc="143115754" ref="our-work"/>
+    <file name="immigration.css" crc="4154152786" ref="immigration"/>
+    <file name="iefonts_immigration.css" crc="398687828" ref="immigration"/>
+    <file name="publications.css" crc="4144365150" ref="publications"/>
+    <file name="iefonts_publications.css" crc="440628199" ref="publications"/>
+    <file name="health.css" crc="88189438" ref="health"/>
+    <file name="iefonts_health.css" crc="233752263" ref="health"/>
+    <file name="tools.css" crc="246286961" ref="tools"/>
+    <file name="iefonts_tools.css" crc="216540645" ref="tools"/>
+    <file name="regional-offices.css" crc="3815897921" ref="regional-offices"/>
+    <file name="iefonts_regional-offices.css" crc="4294695743" ref="regional-offices"/>
+    <file name="issues.css" crc="4253734743" ref="issues"/>
+    <file name="iefonts_issues.css" crc="375832137" ref="issues"/>
+    <file name="index.css" crc="494655716" ref="index"/>
+    <file name="iefonts_index.css" crc="3974878709" ref="index"/>
+    <file name="ams.css" crc="3967579969" ref="ams"/>
+    <file name="iefonts_ams.css" crc="3980722544" ref="ams"/>
+    <file name="events.css" crc="3886122390" ref="events"/>
+    <file name="iefonts_events.css" crc="219451463" ref="events"/>
+  </folder>
+  <folder name="assets">
+    <file name="hhi_interactive_regions_map.html" crc="14375837" mt="1310753277000"/>
+    <file name="nclr-white-01.eps" crc="5401847" mt="1242246821000"/>
+    <file name="nclr-white.eps" crc="477556191" mt="1242246825000"/>
+    <file name="dream-big.tiff" crc="230992777" mt="1429047941000"/>
+    <file name="jm-video.tiff" crc="3917552348" mt="1430427145000"/>
+    <file name="usa.eps" crc="4287852574" mt="1431373662000"/>
+    <file name="2016conflogo_darkcoloredbackground-03.eps" crc="281227015" mt="1432044815000"/>
+    <file name="lgp_stk_4cst_ss_span.eps" crc="208358710" mt="1365602106000"/>
+  </folder>
+  <folder name="scripts">
+    <file name="jquery-1.8.3.min.js" crc="3880902115" ref="index:immigration:tools:issues:our-work:health:regional-offices:events:publications:ams"/>
+    <file name="museutils.js" crc="521960461" ref="index:immigration:tools:issues:our-work:health:regional-offices:events:publications:ams"/>
+    <file name="jquery.musemenu.js" crc="397543671" ref="index:immigration:tools:issues:our-work:health:regional-offices:events:publications:ams"/>
+    <file name="jquery.scrolleffects.js" crc="4038615763" ref="index:immigration:tools:issues:our-work:health:regional-offices:events:publications:ams"/>
+    <file name="jquery.watch.js" crc="56779320" ref="index:immigration:tools:issues:our-work:health:regional-offices:events:publications:ams"/>
+    <file name="webpro.js" crc="220831917" ref="index:events:publications"/>
+    <file name="musewpslideshow.js" crc="224651946" ref="index:events:publications"/>
+    <file name="jquery.museoverlay.js" crc="276313855" ref="index:events:publications"/>
+    <file name="touchswipe.js" crc="325405309" ref="index:events:publications"/>
+    <file name="pie.js" crc="3827607177" ref="index:issues:events:publications"/>
+    <file name="jquery.musepolyfill.bgsize.js" crc="349594875" ref="index"/>
+    <file name="html5shiv.js" crc="4241844378" ref="index:immigration:tools:issues:our-work:health:regional-offices:events:publications:ams"/>
+    <file name="form_check.php" crc="218543696" ref="publications"/>
+    <file name="form_throttle.php" crc="3988545917" ref="publications"/>
+    <file name="form_process.php" crc="4264751530" ref="publications"/>
+    <file name="form-u4086.php" crc="386178990" ref="publications"/>
+  </folder>
+  <folder name="images">
+    <file name="nclr rgb.svg" crc="4077448449" ref="index:immigration:tools:issues:our-work:health:regional-offices:events:publications:ams"/>
+    <file name="nclr rgb_poster_.png" crc="530139337" ref="index"/>
+    <file name="facebook.svg" crc="275600966" ref="index:immigration:tools:issues:our-work:health:regional-offices:events:publications:ams"/>
+    <file name="facebook_poster_.png" crc="3821499192" ref="index"/>
+    <file name="twitter_logo.svg" crc="4144851401" ref="index:immigration:tools:issues:our-work:health:regional-offices:events:publications:ams"/>
+    <file name="twitter_logo_poster_.png" crc="3975905598" ref="index"/>
+    <file name="instagram.svg" crc="3950862455" ref="index:immigration:tools:issues:our-work:health:regional-offices:events:publications:ams"/>
+    <file name="instagram_poster_.png" crc="530862838" ref="index"/>
+    <file name="youtube1.svg" crc="3790382011" ref="index:immigration:tools:issues:our-work:health:regional-offices:events:publications:ams"/>
+    <file name="youtube1_poster_.png" crc="493897616" ref="index"/>
+    <file name="pasted svg 8018x80.svg" crc="3840453546" ref="index:immigration:tools:issues:our-work:health:regional-offices:events:publications:ams"/>
+    <file name="pasted svg 8018x80_poster_.png" crc="4144937882" ref="index"/>
+    <file name="3 boy with flag.jpg" crc="3786020454" ref="index"/>
+    <file name="blank.gif" crc="4208392903" ref="index:publications"/>
+    <file name="3 new citizens_graduation.jpg" crc="407397576" ref="index"/>
+    <file name="2 eacp_nclr_photo_contest_001.jpg" crc="1125289" ref="index"/>
+    <file name="2 alma.jpg" crc="3981561360" ref="index"/>
+    <file name="3 boy with flag-crop-u2073.jpg" crc="4078342560" ref="index"/>
+    <file name="3 new citizens_graduation-crop-u2433.jpg" crc="4111246210" ref="index"/>
+    <file name="2 eacp_nclr_photo_contest_001-crop-u2089.jpg" crc="3998415185" ref="index"/>
+    <file name="2 alma-crop-u2105.jpg" crc="4241141671" ref="index"/>
+    <file name="loading.gif" crc="3815509949" ref="index:publications"/>
+    <file name="pasted svg 52798x16.svg" crc="3874187287" ref="index"/>
+    <file name="pasted svg 52798x16_poster_.png" crc="4225618421" ref="index"/>
+    <file name="omarlopezfoto-nclr-csp-highlight-5.jpg" crc="100169697" ref="index"/>
+    <file name="nclr_19_00573.jpg" crc="3924044148" ref="index"/>
+    <file name="nclr_20_00313.jpg" crc="199142588" ref="index"/>
+    <file name="footer01.jpg" crc="336616055" ref="index:immigration:tools:issues:our-work:health:regional-offices:events:publications:ams"/>
+    <file name="footer02.jpg" crc="4017733999" ref="index:immigration:tools:issues:our-work:health:regional-offices:events:publications:ams"/>
+    <file name="footer03.jpg" crc="4137321457" ref="index:immigration:tools:issues:our-work:health:regional-offices:events:publications:ams"/>
+    <file name="dream-big.jpg" crc="207549665" ref="immigration"/>
+    <file name="pasted svg 611967x435.svg" crc="495267215" ref="immigration"/>
+    <file name="pasted svg 611967x435_poster_.png" crc="4031391930" ref="immigration"/>
+    <file name="adminrelief-crop-u4290.jpg" crc="3814696851" ref="immigration"/>
+    <file name="thelatestondaca-crop-u4302.jpg" crc="3824405902" ref="immigration"/>
+    <file name="livingamericandream-crop-u4308.jpg" crc="346132704" ref="immigration"/>
+    <file name="immigrant-integration-crop-u4314.jpg" crc="317251736" ref="immigration"/>
+    <file name="issues icons-02.svg" crc="4204043001" ref="issues"/>
+    <file name="issues icons-02_poster_.png" crc="293006467" ref="issues"/>
+    <file name="issues icons-03.svg" crc="422399304" ref="issues"/>
+    <file name="issues icons-03_poster_.png" crc="169896815" ref="issues"/>
+    <file name="issues icons-04.svg" crc="3863651997" ref="issues"/>
+    <file name="issues icons-04_poster_.png" crc="274741474" ref="issues"/>
+    <file name="issues icons-06.svg" crc="3956319408" ref="issues"/>
+    <file name="issues icons-06_poster_.png" crc="4233215496" ref="issues"/>
+    <file name="issues icons-07.svg" crc="4024145044" ref="issues"/>
+    <file name="issues icons-07_poster_.png" crc="3839709475" ref="issues"/>
+    <file name="issues icons-09.svg" crc="286794541" ref="issues"/>
+    <file name="issues icons-09_poster_.png" crc="399168601" ref="issues"/>
+    <file name="issues icons-08.svg" crc="4105784203" ref="issues"/>
+    <file name="issues icons-08_poster_.png" crc="432238077" ref="issues"/>
+    <file name="issues icons-05.svg" crc="4108258959" ref="issues"/>
+    <file name="issues icons-05_poster_.png" crc="368787243" ref="issues"/>
+    <file name="jm video.jpg" crc="4030651301" ref="our-work"/>
+    <file name="peer support video bumper-01.jpg" crc="3872367213" ref="health"/>
+    <file name="hhi_interactive_regions_map.swf" crc="296354945" ref="regional-offices"/>
+    <file name="orlando skyline2.jpg" crc="106502795" ref="events"/>
+    <file name="pasted svg 356.svg" crc="3898680846" ref="events"/>
+    <file name="pasted svg 356_poster_.png" crc="4220367322" ref="events"/>
+    <file name="sponsorships form page op 1.jpg" crc="3978744561" ref="events"/>
+    <file name="nalip_1200x630_web_banners.jpg" crc="76037821" ref="events"/>
+    <file name="2016conflogo_darkcoloredbackground-03.svg" crc="458455750" ref="events"/>
+    <file name="2016conflogo_darkcoloredbackground-03_poster_.png" crc="436926027" ref="events"/>
+    <file name="lgp_stk_4cst_ss_span_150ppi.png" crc="3763462354" ref="events"/>
+    <file name="sprint.png" crc="434365908" ref="events"/>
+    <file name="ups_14_logo_std_4cp.jpg" crc="492440766" ref="events"/>
+    <file name="resilientlatinoyouth_web 1.jpg" crc="262358751" ref="publications"/>
+    <file name="advocacy toolkit draft 1 1.jpg" crc="318170095" ref="publications"/>
+    <file name="facilitators_guide_cover.jpg" crc="151496774" ref="publications"/>
+    <file name="resilientlatinoyouth_web 174x95.jpg" crc="4230154782" ref="publications"/>
+    <file name="advocacy toolkit draft 1 173x94.jpg" crc="4164812610" ref="publications"/>
+    <file name="facilitators_guide_cover120x95.jpg" crc="4253799324" ref="publications"/>
+    <file name="u4103-17.png" crc="336839140" ref="publications"/>
+    <file name="u4103-17-r.png" crc="146260151" ref="publications"/>
+    <file name="u4103-17-m.png" crc="3803829149" ref="publications"/>
+    <file name="u4103-17-fs.png" crc="3872598814" ref="publications"/>
+  </folder>
+  <file name="index.html" crc="4264280708" mt="1433975793670" redirect="true"/>
+  <file name="immigration.html" crc="4082747488" mt="1433970234094" redirect="true"/>
+  <file name="tools.html" crc="216030157" mt="1433970234094" redirect="true"/>
+  <file name="issues.html" crc="3967804426" mt="1433970234094" redirect="true"/>
+  <file name="our-work.html" crc="4132565649" mt="1433970234094" redirect="true"/>
+  <file name="health.html" crc="175669207" mt="1433970234094" redirect="true"/>
+  <file name="regional-offices.html" crc="149295803" mt="1433970234094" redirect="true"/>
+  <file name="events.html" crc="199186658" mt="1433974904730" redirect="true"/>
+  <file name="publications.html" crc="3994124115" mt="1433970234094" redirect="true"/>
+  <file name="ams.html" crc="4076870655" mt="1433975145890" redirect="true"/>
+</manifest>

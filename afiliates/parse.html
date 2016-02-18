@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>parsing svc</title>
+
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+	<script src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+	<script src="papaparse.min.js"></script>	
+	<script src="readmore.min.js"></script>
+</head>
+<body>
+	
+<script type="text/javascript">
+	function handleFileSelect() {
+	// function handleFileSelect(evt) {
+	    // var file = evt.target.files[0];
+	    var file = 'http://192.69.4.216:9992/Rhythmyx/web_resources/themes/nclr-2/test.csv';
+
+	    Papa.parse( file, {
+	      	header: true,
+	      	dynamicTyping: true,
+			download: true,
+
+			before: function(file, inputElem)
+			{
+				//loading gif
+			},
+			error: function(err, file, inputElem, reason)
+			{
+				//output error?
+			},
+
+		    complete: function(results) 
+		    {
+		       affiliatesData = results;
+			   affiliateDataParse.init(affiliatesData);
+		    },
+	    });
+	}
+
+
+	$(document).ready(function(){
+		// $("#csv-file").change(handleFileSelect);
+		handleFileSelect();
+	});
+
+
+  	var affiliateDataParse = {
+
+		init : function (affiliates)
+		{
+			var self = this;	
+	  			data = affiliates.data,
+	  			issuesArray	= [],
+				satatesArray = [];
+
+			/**
+			 * Remove any Affiliate empty or not set with minimun require information 
+			 * services property to array
+			 */	
+			for (var i = data.length - 1; i >= 0; i--) 
+			{
+				if( (typeof(data[i].title) === 'undefined' || data[i].title === "") && (typeof(data[i].body) === 'undefined' || data[i].body === "") && (typeof(data[i].state) === 'undefined' || data[i].state === ""))
+				{
+					data.splice(i, 1);	
+				}
+			};	
+
+
+			this._reloadStage(data);
+
+
+			/**
+			 * Filter by issue
+			 */
+			this.outPutFillterByIssue( data ); 
+
+					
+			/**
+			 * filter by region
+			 */
+			this.outPutFilterbyRegion( data ); 
+
+
+			/**
+			 * EVENTS HANDLERS
+			 */
+			$('#filter-by-region').on('change', function (){
+				opt = $(this).val();
+				filterType = $("option:selected", this).attr('data-filter');
+				self._filterByRegion( data, opt, filterType );
+			});
+
+
+			$('#issue-filter').find('.issue-filter-by').on('click', function(){
+				var filterBy = $(this).attr('data-issue');
+				self._filterByIssue( data, filterBy);
+			});
+
+			$('#remove-filters').on('click', function(){
+				self._reloadStage(data);
+			});
+		},
+
+		/**
+		 * Handles the sorting of the object by Alphabetical order 
+		 *
+		 * @param: data-> array of issues object
+		 * @param: sortBy-> string, obj property to sort by
+		 */
+		_sortBy : function ( data, sortBy )
+		{
+			var sortParam = sortBy;
+
+			data.sort(function( obj1, obj2 ){
+				return  obj1[0][sortParam] - obj2[0][sortParam];
+				// return   obj1[0].state - obj2[0].state;
+			});			
+		}, 
+
+
+		/**
+		 *
+		 */
+		_filterByIssue : function ( data, filterBy )
+		{
+			var self = this,
+				issueData = data,
+				displayData = [];
+
+			for (var i = 0, l = issueData.length; i < l; i++) {
+
+				if( issueData[i].issue.indexOf(filterBy) !== -1 ){
+					displayData.push(issueData[i]);
+				}
+			};
+		
+			self._reloadStage(displayData);  
+		},
+
+
+
+		/**
+		 * Handles the filters
+		 *
+		 * @param: data-> array of issues object
+		 * @param: option-> string, value of selected field
+		 * @param: filter-> sting, value of applied filter
+		 */
+		_filterByRegion : function ( data, option, filter )
+		{	
+			var self = this,
+				regionData = data,
+				selectedOption = option,
+				filterBy = filter;
+
+			if( filter == "null" ){
+				return false;
+			}	
+
+
+			function objFilterCallBack ( obj ){
+				if( filterBy in obj && obj[filterBy] == selectedOption ){
+					return true;
+				}else{
+					return false;
+				}
+			}
+
+			arrayDataNew = regionData.filter(objFilterCallBack);
+
+			self._reloadStage(arrayDataNew);  
+		},
+
+
+
+		/**
+		 * Re-render the area where issues are display base on the filter
+		 */
+		_reloadStage : function (data)
+		{
+			var self = this;
+
+			var dataGroup = self.dataGroupBy(data, function(item)
+			{
+			  return [item.state];
+			});
+
+			var dataSorted = dataGroup.sort(function( obj1, obj2 ){
+				return   obj1[0].state - obj2[0].state;
+			});
+
+	  		
+	  		var affiliatesWrapper = $('#affiliates-display').children('.affiliates-nodes').html(""); 
+
+
+			for (var i = 0, l = dataSorted.length; i < l; i++) {
+				self.outPutAffiliates(dataSorted[i]);
+			};
+		},
+
+
+
+
+		/**
+		 * Remove first and last quote from csv fields
+		 */
+  		firstLastQuoteRemove : function (string)
+  		{
+  			var self = this;
+
+			if( string ){
+				return this.sanitizeString(string.substring(1, string.length-1));  		
+			}
+  		
+			return null;
+  		},
+ 	
+
+  		/**
+  		 * Html special chararacters NEED SOME WORK
+  		 */
+  		sanitizeString : function (string)
+  		{
+  			return string
+  				.replace(/&/g, "&amp;")
+  				.replace(/>/g, "&gt;")
+  				.replace(/</g, "&lt;")
+  				.replace(/"/g, "&quot;")
+  				.replace(/¡/g, "&#161;");
+  		},
+
+
+  		/**
+  		 * group object array
+  		 * @return object
+  		 */
+  		dataGroupBy : function( dataArray , callBackFn  )
+  		{
+			var groups = {};
+			dataArray.forEach( function( o )
+			{
+				var group = JSON.stringify( callBackFn(o) );
+			    groups[group] = groups[group] || [];
+			    groups[group].push( o );  
+			});
+			
+			return Object.keys(groups).map( function( group )
+			{
+			    return groups[group]; 
+			});
+  		},
+
+
+  		/**
+  		 * Fetch the unique instances of the object
+  		 * @pram: data->array
+  		 */
+		getUnique : function(data)
+		{
+		   var 	u = {}, 
+		   		a = [];
+		   for(var i = 0, l = data.length; i < l; ++i){
+		      	if(u.hasOwnProperty(data[i])) {
+		        	continue;
+		      	}
+		      	
+		      	a.push(data[i]);
+		      	u[data[i]] = 1;
+		   }
+		   return a;
+		},
+
+
+
+  		/**
+  		 *
+  		 */
+  		_issueProperty : function ( data, property )
+  		{
+	  		var dataArray = [];
+
+
+  			// split fields that have more than one issue assign to them	
+			for (var i = 0, l = data.length; i < l; ++i) {
+			 	dataArray.push(data[i][property].split(","));
+			};  			
+  			
+  			return dataArray;
+  		},
+
+
+
+  		/**
+  		 * write to the dom the html by groups
+  		 * @return HTML TO THE DOM 
+  		 */
+  		outPutAffiliates : function (data)
+  		{
+
+  			var self = this;
+			
+	  		var affiliatesWrapper = $('#affiliates-display').children('.affiliates-nodes'); 
+	  		var affiliateNode;
+	  		var address, body, fax, issues, phone, state, title, website;
+	  		var nodeTitle = '<h3 class="affiliate-node-title" style="text-transform:uppercase">' + data[0].state + '</h3>'; 
+
+	  		affiliateNode = nodeTitle; 
+
+	  		for (var i = data.length - 1; i >= 0; i--) {
+
+	  			title 	= self.firstLastQuoteRemove(data[i].title);
+	  			body 	= self.firstLastQuoteRemove(data[i].body);
+	  			state 	= data[i].state;
+	  			address	= self.firstLastQuoteRemove(data[i].address);
+	  			phone	= data[i].phone;
+	  			fax		= data[i].fax;
+	  			website	= data[i].website;
+	  			issue 	= data[i].issue;
+
+	  			affiliateNode += 	'<article class="affiliate-node clearfix" data-state="' + state + '" data-issue="' + issue + '">';
+	  			affiliateNode +=	'<h3>' + title + '</h3>';
+	  			affiliateNode += 	'<div class="address"><p>' + address + '<br><strong>Phone: </strong>' + phone + '<br><strong>Fax: ' + fax + '</strong><br>' + '<a href="' + website + '" class="website">' + website + '</a><p></div>';  	  			 
+	  			affiliateNode +=	'<p>' + body + '</p>';
+	  			affiliateNode += 	'</article>';
+	  		};
+
+	  		$(affiliateNode).appendTo(affiliatesWrapper);
+  			
+  			$('article').readmore({
+  				speed: 500,
+  				collapsedHeight: 110,
+  				heightMargin : 20, 
+  				moreLink: '<a class="affiliate-node-more" href="#">Read more</a>',
+  				lessLink: '<a class="affiliate-node-more" href="#">Close</a>',
+				beforeToggle: function(trigger, element, expanded) {
+					if(expanded) { 
+						$(element).find('.address').toggle('true');
+					}
+
+					if( ! expanded ){
+						$(element).find('.address').toggle('false');
+					}
+				},
+  				
+  				afterToggle:  function(trigger, element, expanded) {
+					if(expanded) { 
+						$(element).height( $(element).height() + $(element).find('.address').height() );
+					}
+  				}
+  			});
+  		},	
+
+
+
+  		/**
+  		 * Issues List for filter  
+  		 * @return html to the DOM
+  		 */
+  		outPutFillterByIssue: function ( data )
+  		{
+  			var self = this,
+  				wrapper = $('#affiliates-display').children('.filter-by-issue-wrapper'),
+	  			issues=[],
+  				issuesFilter;
+
+
+  			// split fields that have more than one issue assign to them	
+  			issuesArray = self._issueProperty( data, 'issue' );	
+
+
+			// flattend array
+			issuesArrayFlat = [].concat.apply([], issuesArray);
+			
+
+			// remove any white space affter split.
+			for (var i = issuesArrayFlat.length - 1; i >= 0; i--) {
+				issues.push(issuesArrayFlat[i].trim());
+			};
+
+			//remove repeated instances in array
+			issuesToOuput = self.getUnique(issues);
+
+			issuesToOuput.sort();
+
+			issuesFilter = '<h3>Filter By Issue</h3>';
+			issuesFilter += '<ul id="issue-filter">';
+
+			for (var i = 0, l = issuesToOuput.length; i < l; ++i) {
+				issuesFilter += '<li><a class="issue-filter-by" data-issue="' + issuesToOuput[i] + '">' + issuesToOuput[i] + '</a></li>';
+			};
+
+			issuesFilter += "</ul>";
+
+	  		$(issuesFilter).appendTo(wrapper);
+  		},
+
+
+  		/**
+  		 * 
+  		 */
+  		outPutFilterbyRegion: function ( data )
+  		{
+  			var self = this,
+  				regionsArray,
+  				stateArray,
+  				stateFilter,
+  				wrapper = $('#affiliates-display').children('.filter-by-region-wrapper');
+
+			regionsArray = self._issueProperty( data, 'region');
+			stateArray = self._issueProperty( data, 'state');		
+
+			regionsOutput = self.getUnique(regionsArray);
+  			stateOuput = self.getUnique(stateArray);
+
+  			regionsOutput.sort();
+  			stateOuput.sort();
+
+  			
+
+  			stateFilter = '<h3>Filter by region/state</h3>';
+  			stateFilter += '<select id="filter-by-region">'; 
+  			stateFilter += '<optgroup data-filter="null" label="Regions">'; 
+  			for (var i = 0, l = regionsOutput.length;  i < l; i++) {
+				stateFilter += '<option data-filter="region" value="' + regionsOutput[i] + '">' + regionsOutput[i] + '</option>'; 				  				
+  			};
+
+
+  			stateFilter += '</optgroup>';
+  			stateFilter += '<optgroup data-filter="null" label="State">'; 
+  			for (var i = 0, l = stateOuput.length;  i < l; i++) {
+				stateFilter += '<option data-filter="state" value="' + stateOuput[i] + '">' + stateOuput[i] + '</option>'; 
+  			};
+  			stateFilter += '</optgroup>'; 
+  			stateFilter += '</select>'; 
+
+  			$(stateFilter).appendTo(wrapper);
+  		}
+  	}
+</script>
+
+<!-- <input type="file" id="csv-file" name="files"/> -->
+<div id="affiliates-display" class="row clearfix">
+	<div class="col-xs-12 filter-by-issue-wrapper"></div>
+	<div class="col-xs-12 filter-by-region-wrapper"></div>
+	<div class="col-xs-12 filter-remove clearfix">
+		<h3>
+			<a id="remove-filters">
+				Remove Filters
+				<i class="fa fa-bars"></i>
+			</a>
+		</h3>
+	</div>
+	<div class="col-xs-12 affiliates-nodes clearfix"></div>	
+</div>

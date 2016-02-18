@@ -1,0 +1,146 @@
+<ul id="thumbnails">
+    #if($imgTitle1 == "false")
+        <li>
+            <a href="$imgLink1">
+                <img src="$img1_path" alt=''>
+            </a>
+        </li>
+    #else
+        <li>
+            <a href="$imgLink1">
+                <img src="$img1_path" alt='<a class="slider-caption-link" href="$imgLink1">$imgTitle1</a>'>
+            </a>
+        </li>    
+    #end
+
+    
+    #if($imgTitle2 == "false")
+        <li>
+            <a href="$imgLink2">
+                <img src="$img2_path">
+            </a>
+        </li>
+    #else
+        <li>
+            <a href="$imgLink2">
+                <img src="$img2_path"  alt='<a class="slider-caption-link" href="$imgLink2">$imgTitle2</a>'>
+            </a>
+        </li>
+    #end
+        
+
+    #if($imgTitle3 == "false")
+        <li>
+            <a href="$imgLink3">
+                <img src="$img3_path">
+            </a>
+        </li>
+    #else
+        <li>
+            <a href="$imgLink3">
+                <img src="$img3_path"  alt='<a class="slider-caption-link" href="$imgLink3">$imgTitle3</a>'>
+            </a>
+        </li>
+    #end
+        
+
+    #if($imgTitle4 == "false")
+        <li>
+            <a href="$imgLink4">
+                <img src="$img4_path">
+            </a>
+        </li>
+    #else
+        <li>
+            <a href="$imgLink4">
+                <img src="$img4_path"  alt='<a class="slider-caption-link" href="$imgLink4">$imgTitle4</a>'>
+            </a>
+        </li>
+    #end
+</ul>
+
+<div class="thumb-box">
+    <ul class="thumbs">
+        <li>
+            <a href="#1" data-slide="1">
+                <img src="$img1_path" alt="$img1_alt_text">
+            </a>
+        </li>
+        
+        <li>
+            <a href="#2" data-slide="2">
+                <img src="$img2_path"  alt="$img2_alt_text">
+            </a>
+        </li>
+        
+        <li>
+            <a href="#3" data-slide="3">
+                <img src="$img3_path" alt="$img3_alt_text">
+            </a>
+        </li>
+        
+        <li>
+            <a href="#4" data-slide="4">
+                <img src="$img4_path" alt="$img4_alt_text">
+            </a>
+        </li>
+    </ul>
+</div>        
+
+<script>
+window.onload = function(){
+    //HOME SLIDER
+    // splippry slider options
+    var thumbs = jQuery('#thumbnails').slippry({
+    // general elements & wrapper
+        slippryWrapper: '<div class="slippry_box thumbnails" />',
+        // options
+        pause: "$slideTime", //The time a slide lasts. default value 3000
+        speed: "$slideSpeed", //The time the transition takes to complete. Default value 800
+        transition: "$slideTransition", //Transition type to use, or no transitions 'fade', 'horizontal', 'vertical', 'kenburns', false
+        pager: false,
+        auto: true,
+
+
+        onSlideBefore: function (el, index_old, index_new) {
+       
+            jQuery('.thumbs a img').removeClass('active');
+            jQuery('img', jQuery('.thumbs a')[index_new]).addClass('active');
+            
+            //remove any styling apply to the caption wrapper
+            var captionWrapper  = jQuery('.sy-caption-wrap').children('.sy-caption');
+            var captionLink     = captionWrapper.children('a'); 
+            
+
+            captionWrapper.removeClass('cap-left-top cap-left-middle cap-left-bottom cap-center-bottom cap-center-top cap-right-bottom cap-right-middle cap-right-top caption-bold');
+            //jQuery('.sy-caption-wrap').addClass('container');
+
+            // add styling base on order
+            switch(index_new){
+                case 0:
+                    captionWrapper.addClass("$captionPosition1");
+                    //captionWrapper.addClass("$capBold1");
+                    break;                
+                case 1:
+                    captionWrapper.addClass("$captionPosition2");
+                    //captionWrapper.addClass("$capBold2");
+                    break;                
+                case 2:
+                    captionWrapper.addClass("$captionPosition3");
+                    //captionWrapper.addClass("$capBold3");
+                    break;                
+                case 3:
+                    captionWrapper.addClass("$captionPosition4");
+                    //captionWrapper.addClass("$capBold4");
+                    break;                                                
+            } 
+        }
+    });
+
+    jQuery('.thumbs a').click(function () {
+        thumbs.goToSlide($(this).data('slide'));
+        return false;
+    });
+}
+</script>  
+
