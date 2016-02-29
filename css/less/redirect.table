@@ -1,0 +1,152 @@
+<rule name="civicengagement Redirect">
+	<match url="civicengagement" />
+	<action type="Redirect" url="http://action.nclr.org/p/salsa/web/common/public/signup?signup_page_KEY=3663" />
+</rule>	
+
+
+<rule name="getinvolved Redirect">
+	<match url="getinvolved" />
+	<action type="Redirect" url="http://action.nclr.org/p/salsa/web/common/public/signup?signup_page_KEY=3663" />
+</rule>	
+
+<rule name="signup Redirect">
+	<match url="signup" />
+	<action type="Redirect" url="http://action.nclr.org/p/salsa/web/common/public/signup?signup_page_KEY=3663" />
+</rule>	
+
+<rule name="subscribe Redirect">
+	<match url="subscribe" />
+	<action type="Redirect" url="http://action.nclr.org/p/salsa/web/common/public/signup?signup_page_KEY=3663" />
+</rule>	
+
+<rule name="takeaction Redirect">
+	<match url="takeaction" />
+	<action type="Redirect" url="http://action.nclr.org/p/salsa/web/common/public/signup?signup_page_KEY=3663" />
+</rule>	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<rule name="civilrights Redirect">
+	<match url="civilrights" />
+	<action type="Redirect" url="http://www.nclr.org/issues/civil-rights/" />
+</rule>	
+
+<rule name="conference Redirect">
+	<match url="conference" />
+	<action type="Redirect" url="http://conference.nclr.org/" />
+</rule>	
+
+<rule name="criminaljustice Redirect">
+	<match url="criminaljustice" />
+	<action type="Redirect" url="http://www.nclr.org/issues/civil-rights/" />
+</rule>	
+
+
+
+
+
+		<rule name="economy Redirect">
+			<match url="economy" />
+			<action type="Redirect" url="http://www.nclr.org/issues/economy/" />
+		</rule>	
+
+
+		<rule name="education Redirect">
+			<match url="education" />
+			<action type="Redirect" url="http://www.nclr.org/issues/education/" />
+		</rule>	
+
+		<rule name="employment Redirect">
+			<match url="employment" />
+			<action type="Redirect" url="http://nclr.org/issues/economy/employment/" />
+		</rule>	
+
+
+
+		<rule name="events Redirect">
+			<match url="events" />
+			<action type="Redirect" url="http://www.nclr.org/events/" />
+		</rule>	
+
+<rule name="expo Redirect">
+	<match url="expo" />
+	<action type="Redirect" url="http://expo.nclr.org/" />
+</rule>	
+
+
+
+		<rule name="health Redirect">
+			<match url="health" />
+			<action type="Redirect" url="http://www.nclr.org/issues/health/" />
+		</rule>	
+
+<rule name="healthcare Redirect">
+	<match url="healthcare" />
+	<action type="Redirect" url="http://www.nclr.org/issues/Health/coverage-and-care/" />
+</rule>	
+
+		<rule name="immigration Redirect">
+			<match url="immigration" />
+			<action type="Redirect" url="http://www.nclr.org/issues/immigration/" />
+		</rule>	
+
+<rule name="jobs Redirect">
+	<match url="jobs" />
+	<action type="Redirect" url="http://nclr.org/about-us/careers/" />
+</rule>	
+
+		<rule name="justice Redirect">
+			<match url="justice" />
+			<action type="Redirect" url="http://www.nclr.org/issues/civil-rights/" />
+		</rule>	
+
+		<rule name="nlad Redirect">
+			<match url="nlad" />
+			<action type="Redirect" url="http://www.nclr.org/events/Other-Events/NLAD-Latino-Voter-Summit/" />
+		</rule>	
+
+		<rule name="nutrition Redirect">
+			<match url="nutrition" />
+			<action type="Redirect" url="http://nclr.org/issues/health/nutrition-and-wellness/" />
+		</rule>	
+
+<rule name="publications Redirect">
+	<match url="publications" />
+	<action type="Redirect" url="http://publications.nclr.org/" />
+</rule>	
+
+
+
+<rule name="timetovote Redirect">
+	<match url="timetovote" />
+	<action type="Redirect" url="https://latinosvote2016.org/" />
+</rule>	
+
+<rule name="vote Redirect">
+	<match url="vote" />
+	<action type="Redirect" url="https://latinosvote2016.org/" />
+</rule>	
+
+		<rule name="voting Redirect">
+			<match url="voting" />
+			<action type="Redirect" url="http://nclr.org/issues/voting/" />
+		</rule>	
+
+		<rule name="youth Redirect">
+			<match url="youth" />
+			<action type="Redirect" url="http://www.nclr.org/issues/youth/" />
+		</rule>	
+
